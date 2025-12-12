@@ -1,0 +1,497 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo {
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.section {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #667eea;
+}
+
+.players-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#player-name {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#player-name:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #d0d0d0;
+}
+
+.btn-large {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.btn-start {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin-top: 1rem;
+}
+
+.players-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.player-tag {
+    background: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.player-tag .remove {
+    cursor: pointer;
+    color: #999;
+    font-weight: bold;
+}
+
+.player-tag .remove:hover {
+    color: #667eea;
+}
+
+.game-types {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.game-type-btn {
+    padding: 1.5rem;
+    border: 3px solid #e0e0e0;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.game-type-btn .icon {
+    font-size: 2rem;
+}
+
+.game-type-btn:hover {
+    transform: scale(1.05);
+}
+
+.game-type-btn.active {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+.difficulties {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.difficulty-btn {
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.difficulty-btn:hover {
+    transform: scale(1.05);
+}
+
+.difficulty-btn.active {
+    border-color: #667eea;
+    background: #667eea;
+    color: white;
+}
+
+.card-count-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#game-screen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: white;
+}
+
+.btn-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.game-info {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, opacity 0.3s;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+}
+
+.card.dragging {
+    cursor: grabbing;
+}
+
+.card.swipe-left {
+    transform: translateX(-150%) rotate(-20deg);
+    opacity: 0;
+}
+
+.card.swipe-right {
+    transform: translateX(150%) rotate(20deg);
+    opacity: 0;
+}
+
+.card-content {
+    text-align: center;
+    width: 100%;
+}
+
+.target-info {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+}
+
+.timer-info {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.duel-info {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f39c12;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(243, 156, 18, 0.1);
+    border-radius: 8px;
+}
+
+.team-info {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.team-info .team {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 6px;
+}
+
+.team-info .team:first-child {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.team-info .team:last-child {
+    color: #3498db;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.team-info .vs {
+    font-weight: bold;
+    color: #999;
+    margin: 0.5rem 0;
+}
+
+.card-text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.card-penalty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.penalty-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.penalty-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.swipe-indicators {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.5;
+}
+
+.indicator span:first-child {
+    font-size: 3rem;
+}
+
+.swipe-hint {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.scores-list {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.score-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.score-item:last-child {
+    border-bottom: none;
+}
+
+.score-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.score-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.scores-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scores-actions .btn {
+    flex: 1;
+}
+
+#end-screen h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+#end-screen .container {
+    color: white;
+}
+
+#scores-screen .container h2 {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .card-text {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 1rem;
+    }
+}
