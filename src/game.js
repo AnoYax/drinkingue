@@ -60,7 +60,7 @@ function createTeams() {
 
 async function loadCardsData() {
     try {
-        const response = await fetch('/src/data/cartes_piccolo_reelles.json');
+        const response = await fetch('./src/data/cartes_piccolo_reelles.json');
         cardsData = await response.json();
     } catch (error) {
         console.error('Error loading cards:', error);
