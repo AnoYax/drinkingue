@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piccolo - Jeu à Boire</title>
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="setup-screen" class="screen active">
+            <div class="container">
+                <h1 class="logo">🍺 Piccolo</h1>
+                <p class="subtitle">Jeu à boire entre amis</p>
+
+                <div class="section">
+                    <h2>Joueurs</h2>
+                    <div class="players-input">
+                        <input type="text" id="player-name" placeholder="Nom du joueur" />
+                        <button id="add-player" class="btn btn-primary">Ajouter</button>
+                    </div>
+                    <div id="players-list" class="players-list"></div>
+                </div>
+
+                <div class="section">
+                    <h2>Type de jeu</h2>
+                    <div class="game-types">
+                        <button class="game-type-btn active" data-type="casual">
+                            <span class="icon">😊</span>
+                            <span>Casual</span>
+                        </button>
+                        <button class="game-type-btn" data-type="caliente">
+                            <span class="icon">🔥</span>
+                            <span>Caliente</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Difficulté</h2>
+                    <div class="difficulties">
+                        <button class="difficulty-btn active" data-difficulty="1">
+                            <span>Facile</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="2">
+                            <span>Moyen</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="3">
+                            <span>Difficile</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Nombre de cartes</h2>
+                    <input type="number" id="card-count" value="20" min="5" max="100" class="card-count-input" />
+                </div>
+
+                <button id="start-game" class="btn btn-large btn-start">Commencer le jeu</button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <button id="quit-game" class="btn-icon">✕</button>
+                <div class="game-info">
+                    <span id="card-counter">0 / 0</span>
+                </div>
+                <button id="show-scores" class="btn-icon">📊</button>
+            </div>
+
+            <div class="card-container">
+                <div id="card" class="card">
+                    <div class="card-content">
+                        <p id="card-text" class="card-text"></p>
+                        <div class="card-penalty">
+                            <span id="card-penalty" class="penalty-value"></span>
+                            <span class="penalty-label">gorgées si refus</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swipe-indicators">
+                    <div class="indicator left">
+                        <span>✗</span>
+                        <span>Refus</span>
+                    </div>
+                    <div class="indicator right">
+                        <span>✓</span>
+                        <span>Fait</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swipe-hint">
+                Glisse à gauche pour refuser, à droite si c'est fait
+            </div>
+        </div>
+
+        <div id="scores-screen" class="screen">
+            <div class="container">
+                <h2>Scores</h2>
+                <div id="scores-list" class="scores-list"></div>
+                <div class="scores-actions">
+                    <button id="continue-game" class="btn btn-primary">Continuer</button>
+                    <button id="end-game" class="btn btn-secondary">Terminer</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="end-screen" class="screen">
+            <div class="container">
+                <h1>🏆 Partie terminée !</h1>
+                <div id="final-scores" class="scores-list"></div>
+                <button id="new-game" class="btn btn-large btn-start">Nouvelle partie</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/game.js"></script>
+</body>
+</html>
